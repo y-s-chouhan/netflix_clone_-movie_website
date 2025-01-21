@@ -1,0 +1,659 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e); /* Dark gradient background */
+  color: #ffffff; /* White text for contrast */
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #0f3460, #533483); /* Vibrant gradient for the header */
+  color: #ffffff; /* White header text */
+  padding-top: 50px;
+  position: relative;
+  text-align: center;
+  border-bottom: 2px solid #f10d0d;
+}
+header h2 {
+  font-size: 2.5rem; /* Adjust font size as needed */
+  font-weight: bold;
+  color: #ffffff; /* Vibrant color for visibility */
+  text-align: center;
+  margin: 0; /* Reset default margins */
+  padding: 0;
+  position: relative; /* Enables top adjustment */
+  top: -10px; /* Move it 10px upwards */
+
+}
+
+.movie-matrix {
+  font-size: 2rem; /* Large and bold text */
+  color: #4ecca3; /* Green modern color */
+  font-family: 'Poppins', sans-serif; /* Stylish font */
+  text-transform: uppercase; /* All caps for boldness */
+  letter-spacing: 1px; /* Spacing between letters */
+}
+.logo {
+  width: 30px; /* Adjust the size of the logo */
+  height: auto ;
+  object-fit: contain; /* Keep the logo aspect ratio */
+}
+.logo-header {
+    display: flex;
+    align-items: center; /* Vertically centers the logo and text */
+    gap: 15px; /* Adds space between the logo and text */
+    background-color: #0f4c75; /* Modern blue background */
+    padding: 10px 20px; /* Adds padding for spacing */
+    border-radius: 8px; /* Smooth edges */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Attractive shadow */
+  }
+  
+.header-container h1 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.search-bar {
+  position: absolute; /* Position it at a fixed spot */
+  top: 6px; /* Distance from the top of the page */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center align */
+  width: 60%; /* Adjust the width of the search bar */
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #16213e; /* Dark blue background */
+  color: #fff; /* White text */
+  outline: none;
+}
+
+.search-bar::placeholder {
+  color: #bfbfbf; /* Subtle placeholder color */
+
+}
+
+.search-bar:focus {
+  border-color: #ff4500;
+  background-color: #444;
+}
+.search-bar:hover {
+  border-color: #ff4500;
+  background-color: #444;
+}
+
+
+
+/* Movie Grid */
+#movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  justify-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.movie {
+  width: 100%;
+  height: 350px;
+  background-color: #333;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 99, 71, 0.8);
+  transform: scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#movie-matrix-heading {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-align: left;
+  padding-left: 20px; /* Adds some space from the left edge */
+}
+
+.movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 99, 71, 0.9);
+}
+
+.movie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-title {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255, 99, 71, 0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content.show {
+  opacity: 1;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #ff6347;
+}
+
+/* Trending Movies Section */
+#trending-movies {
+  padding: 20px;
+  align-items: center;
+
+}
+#trending-movies h2{
+  display: flex;
+  font-size: 2rem;
+  color: #4ecca3; /* Green for heading consistency */
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+
+}
+.movie-list {
+  display: flex;
+  justify-content: center; /* Center-aligns all movies */
+  gap: 20px; /* Spacing between movies */
+}
+
+.movie-item {
+  display: flex;
+  flex-direction: column; /* Stacks the image and title vertically */
+  align-items: center; /* Centers content within each movie item */
+  max-width: 200px;
+}
+
+.movie-item img {
+  width: 100%; /* Makes the image responsive */
+  border-radius: 10px; /* Adds rounded corners to the poster */
+  transition: transform 0.3s ease; /* Hover effect transition */
+}
+
+.movie-item img:hover {
+  transform: scale(1.1); /* Zooms in slightly on hover */
+}
+
+.movie-name {
+  margin-top: 10px; /* Spacing between image and text */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+
+
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Apply animation to header */
+header {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Add smooth transition for the grid */
+#movie-grid {
+  animation: fadeIn 2s ease-out;
+}
+
+
+#top-rated-movies {
+  background: linear-gradient(135deg, #1b262c, #0f4c75); /* Deep blue gradient */
+  color: #ffffff; /* White text for readability */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for a modern look */
+   text-align: center;
+}
+
+#top-rated-movies h2 {
+  font-size: 2rem;
+  color: #4ecca3; /* Modern green for the section heading */
+  margin-bottom: 20px;
+}
+
+.movie-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.movie-item {
+  width: 200px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+.movie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-item p {
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.movie-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+#upcoming-movies {
+  background: linear-gradient(135deg, #1a1a2e, #533483); /* Dark purple gradient */
+  color: #ffffff; /* White text */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#upcoming-movies h2 {
+  font-size: 2rem;
+  color: #4ecca3; /* Green for heading consistency */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.movie-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.movie-item {
+  width: 200px;
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+.movie-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-item p {
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+#genres {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #16213e, #0f3460); /* Midnight blue gradient */
+  color: #ffffff;
+}
+
+#genres h2 {
+  font-size: 2rem;
+  color: #4ecca3; /* Green for heading consistency */
+  margin-bottom: 20px;
+}
+
+.genre-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.genre-item {
+  width: 200px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.genre-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+.genre-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.genre-item p {
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+#popular-actors {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f4c75, #3282b8); /* Light blue gradient */
+  color: #ffffff;
+  text-align: center;
+}
+
+#popular-actors h2 {
+  color: #4ecca3; /* Green for heading consistency */
+  margin-bottom: 20px;
+}
+
+.actor-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+#popular-actors {
+  padding: 40px 20px;
+  background-color: #333;
+  text-align: center;
+  color: #fff;
+}
+
+#popular-actors h2 {
+  font-size: 2rem;
+  color: #4ecca3; /* Green for heading consistency */
+  margin-bottom: 20px;
+}
+
+.actor-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.actor-item {
+  width: 200px;
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.actor-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 99, 71, 0.8);
+}
+
+.actor-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.actor-item p {
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+#movie-reviews {
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1b262c, #533483); /* Blue-purple gradient */
+  color: #ffffff;
+
+}
+
+#movie-reviews h2 {
+  font-size: 2rem;
+  color: #4ecca3; /* Green for heading consistency */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.review-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.review-item {
+  width: 250px;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.review-item:hover {
+  transform: scale(1.05);
+}
+
+.review-author {
+  font-weight: bold;
+  color: #ff6347;
+}
+
+.review-text {
+  color: #fff;
+}
+
+
+footer {
+  background: linear-gradient(135deg, #0f3460, #1b262c); /* Subtle dark blue gradient */
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  border-top: 2px solid #4ecca3; /* Green border for visual separation */
+}
+
+
+footer .social-links {
+  margin-top: 10px;
+}
+
+footer .social-links a {
+  color: #4ecca3; /* Green links */
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+footer .social-links a:hover {
+  text-decoration: underline;
+  color: #3da882; /* Slightly darker green on hover */
+}
+button {
+  background-color: #4ecca3; /* Modern green for buttons */
+  color: #0f3460; /* Complementary text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3da882; /* Slightly darker green on hover */
+}
+
+
+
+.movie-card {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+.movie-card-container {
+  perspective: 1000px;
+}
+
+.movie-card {
+  width: 200px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.movie-card:hover {
+  transform: rotateY(180deg);
+}
+
+.movie-card .front, .movie-card .back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.movie-card .back {
+  transform: rotateY(180deg);
+}
+.movie-title {
+  display: inline-block;
+  font-size: 24px;
+  border-right: 3px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(30) forwards;
+}
+
+@keyframes typing {
+  100% {
+      width: 100%;
+  }
+}
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+.parallax {
+  background-image: url('your-image.jpg');
+  height: 500px;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+  min-width: 200px;
+  margin-right: 20px;
+  scroll-snap-align: center;
+}
